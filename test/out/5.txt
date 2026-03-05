@@ -1,0 +1,4 @@
+Please enter the number of the test to run: Testing Assignment::get_latest_submission
+Latest before submissions: nullptr
+Latest after submissions: Draft 2 (t=11)
+Latest for non-assignee: nullptr

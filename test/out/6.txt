@@ -1,0 +1,4 @@
+Please enter the number of the test to run: Testing Assignment::count_submitted
+Initial submitted count is: 0
+Submitted count after u1,u3 submit is: 2
+Submitted count after u1 submits again is: 2

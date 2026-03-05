@@ -1,0 +1,5 @@
+Please enter the number of the test to run: Testing Assignment::add_assignee
+The number of assignees is: 1
+The number of to-do items for Sunny is: 1
+The to-do items are:
+Item 0: In this assignment, we will complete an assignment.

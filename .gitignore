@@ -1,14 +1,18 @@
-# Ignore compiled executables (e.g., lab2, a.out)
-*
+# Ignore compiled object files and executables
+*.o
+*.out
+lab2
+a.out
+
+# Ignore macOS system files
+.DS_Store
+*.swp
+
+# Keep all source code, data folder, and config files
+!*/          # 👈 关键：不忽略任何子文件夹
 !*.cpp
 !*.h
 !*.pdf
 !data/
 !.gitignore
-
-# Ignore object files (.o)
-*.o
-
-# Ignore macOS hidden files
-.DS_Store
-*.swp
+!README.md

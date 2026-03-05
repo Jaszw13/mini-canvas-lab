@@ -1,0 +1,4 @@
+Please enter the number of the test to run: Testing User::complete
+The number of to-do items is: 1
+The to-do items are:
+Item 0: In this lab, you will be completing a mini-Canvas system.

@@ -1,0 +1,4 @@
+Please enter the number of the test to run: Testing User::add_todo
+The number of to-do items is: 1
+The to-do items are:
+Item 0: In this assignment, you will complete a 1000-word essay on why COMP 2012 is the best course.

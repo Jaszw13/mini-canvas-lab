@@ -1,0 +1,83 @@
+Your first task in your new job is to write a mini-Canvas system for students to submit their coding assignments.
+
+In this lab, we will be completing the implementation of two classes: Assignment and User. This is the core part of the system, so you should make sure that your code doesn't have any bugs.
+Concluding Remarks
+You are required to implement the tasks in assignment.cpp and user.cpp. The .cpp file have already been given to you. You have to complete the tasks and submit these files only to ZINC.
+You are NOT allowed to define any non-constant length array even in the C++11 standard (as mentioned in the lecture). However, many modern C++ compilers actually allow creating variable length arrays (VLAs), which we will disable this feature using the -Werror=vla flag when compiling your code. You should use new for dynamic length arrays.
+You are NOT allowed to include any additional libraries. All the required libraries are already included in the skeleton code.
+You are NOT allowed to use the auto or decltype keywords.
+You are NOT allowed to define any static or global variables.
+
+Tasks
+This section describes the functions that you will need to implement. We recommend you to implement Part I before Part II. The functions you implemented in Part I may help you in Part II.
+
+You should read the definitions inside assignment.h, submission.h and user.h before writing anything.
+
+
+Part I: Users
+
+The User class
+The User class represents a user in our Canvas system. Each user has a to-do list of assignments, which should be updated when an assignment adds an assignee and when a user makes a submission.
+
+Implement the following functions inside the file user.cpp. You do NOT need to implement all the functions. Some of the implementations have already been provided to you.
+void User::add_todo(Assignment* assign);
+Description - Adds an assignment to the to-do list of this user. You do not need to consider duplicates when implementing this function.
+Remember to resize the array by adding 1 to the size, and update the number of to-dos.
+Parameters:
+assign - The assignment to add.
+Return value: None.
+void User::complete(Assignment* assign);
+Description - Removes an assignment from the to-do list of this user.
+If the assignment is already not on the list, do nothing.
+Otherwise, you should remove the first occurrence assignment from the to-do list and resize the array such that there is no "gap" between the assignments.
+There should NOT be any empty spaces in the array after resizing.
+As above, remember to resize the array and update the number of to-dos.
+Parameters:
+assign - The assignment to mark as complete.
+Return value: None.
+Part II: Assignments
+
+After this warmup, let's move on to the complicated part of the lab!
+
+The Assignments class
+The Assignment class represents an assignment in our Canvas system. Each assignment has a description, a list of assignees, and the submissions from each assignee. As we want to keep a record of all submissions (this is what Canvas also does), we will use a dynamic array of linked lists to store all submissions.
+
+Implement the following functions inside the file assignment.cpp.
+
+Assignment::Assignment(const string& description);
+Description - Constructs an Assignment with no assignees.
+You should initialize the number of assignees to zero, and the assignees / submissions pointers to nullptr.
+Parameters:
+description - The description of the assignment.
+Assignment::~Assignment();
+Description - Destructs this assignment.
+You should free the dynamically allocated arrays and linked lists. Note that you should NOT delete the user objects; this is handled by the main functions.
+Parameters: None.
+void Assignment::add_assignee(User* user);
+Description - Adds an assignee to the assignment.
+You do NOT need to handle duplicate assignees.
+Remember to deep copy and expand the assignees and submissions arrays themselves by 1, and update the to-do list of the input user.
+For clarity, you do NOT need to copy the user objects themselves. You only need to copy the arrays.
+Parameters:
+user - The assignee to add.
+Return value: None.
+void Assignment::add_submission(Submission* submission);
+Description - Adds a submission to the assignment.
+You should first find the position of the user in the assignees array who has created this submission.
+If the user is not an assignee of this assignment, do nothing and return.
+Otherwise, you should check whether the user already has a submission. If the user has no prior submissions, initialize a new linked list holding the submission. Otherwise, append the submission to the existing linked list.
+You should mark the assignment as complete for the user at the end.
+Parameters:
+submission - The submission to add.
+Return value: None.
+Submission* Assignment::get_latest_submission(User* user) const;
+Description - Gets the latest submission from a given user.
+You may assume that submissions must be added in order of timestamp (i.e. the latest submission must be at the end of the linked list).
+If the user is not an assignee, or if the user has no prior submissions, return nullptr.
+Parameters:
+user - The user to search the latest submission for.
+Return value: A pointer to the latest submission of this assignment by this user; or a nullptr if the user is not an assignee or has no prior submissions.
+int Assignment::count_submitted() const;
+Description - Computes the number of assignees who has submitted the assignment at least once.
+Parameters: None.
+Return value: The number of assignees with at least one submission.
