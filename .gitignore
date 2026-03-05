@@ -1,0 +1,14 @@
+# Ignore compiled executables (e.g., lab2, a.out)
+*
+!*.cpp
+!*.h
+!*.pdf
+!data/
+!.gitignore
+
+# Ignore object files (.o)
+*.o
+
+# Ignore macOS hidden files
+.DS_Store
+*.swp
